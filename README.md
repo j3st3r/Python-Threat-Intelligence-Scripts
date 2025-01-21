@@ -17,7 +17,7 @@ Python Scripts
 
 
 Required Modules:
-  AlienVault scripts requires the following modules:
+  AlienVault scripts require the following modules:
   + requests
   + json
 
