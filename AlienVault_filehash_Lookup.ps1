@@ -40,7 +40,11 @@ $analysis_url = "https://otx.alienvault.com/api/v1/indicators/file/$file_hash/an
 $gen_response = Invoke-RestMethod -Method GET -Uri $gen_url
 $analysis_response = Invoke-RestMethod -Method GET -Uri $analysis_url
 
-
+if($analysis_response.analysis -match " "){
+    Write-Host "No Malicious Information for this file: "
+    Write-Host `t$file
+    Write-Host `t$file_hash
+}else{
 # The Reporting Process
 Write-Host "=========================================================="
 Write-Host "IoC Information for: $file_hash"
@@ -74,4 +78,4 @@ foreach($pulse in $gen_response.pulse_info.pulses){
     Write-Host ""
    
 }
-
+}
