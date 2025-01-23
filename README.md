@@ -5,7 +5,7 @@ Scripts used to gather Threat Intelligence (Indicators of Compromise) informatio
 
 PowerShell Scripts:
   + AlienVault_IP_Lookup.ps1
-  + Secure_VirusTotal_IP_Lookup.ps1
+  + AlienVault_filehash_Lookup.ps1
 
 Python Scripts
   + AlienVault_Domain_Lookup.py
