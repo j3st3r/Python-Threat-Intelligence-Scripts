@@ -29,7 +29,7 @@ function Open-FileDialog {
 }
 $file = Open-FileDialog -InitialDirectory "C:\Temp"
 Write-Output "Selected file: $file"
-$sha1 = New-Object System.Security.Cryptography.SHA1CryptoServiceProvider
+$sha1 = New-Object System.Security.Cryptography.SHA1CryptoServiceProvider # You can change the SHA between SHA1 & SHA256
 $file_hash = [System.BitConverter]::ToString($sha1.ComputeHash([System.IO.File]::ReadAllBytes($file))).Replace('-', '')
 
 # Assign URL variables here
@@ -40,7 +40,7 @@ $analysis_url = "https://otx.alienvault.com/api/v1/indicators/file/$file_hash/an
 $gen_response = Invoke-RestMethod -Method GET -Uri $gen_url
 $analysis_response = Invoke-RestMethod -Method GET -Uri $analysis_url
 
-if($analysis_response.analysis -match " "){
+if($analysis_response.analysis -match ""){
     Write-Host "No Malicious Information for this file: "
     Write-Host `t$file
     Write-Host `t$file_hash
