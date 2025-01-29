@@ -92,8 +92,10 @@ if gen_response.status_code == 200:
         source_name = items['name']
         print("\t", source_name)
     print("")
-
-    if dns_response.status_code == 200:
+else:
+    print("Request failed with status", {gen_response.status_code}) # Error Code here
+    
+if dns_response.status_code == 200:
         dns_info = dns_response.json()
     
         dns_info = dns_info['passive_dns']
@@ -103,10 +105,10 @@ if gen_response.status_code == 200:
         for dns in dns_info:
             print("\t", dns['hostname'])
         print("")
-    else:
-        print("Request failed with status", {dns_response.status_code}) # Error Code here
+else:
+    print("Request failed with status", {dns_response.status_code}) # Error Code here
 
-    if urls_response.status_code == 200:
+if urls_response.status_code == 200:
         urls_info = urls_response.json()
     
         urls_list = urls_info['url_list']
@@ -117,22 +119,25 @@ if gen_response.status_code == 200:
             ass_urls = listing['url']
             print("\t", ass_urls)
             print("")
-    else:
+else:
         print("Request failed with status", {urls_response.status_code}) # Error Code here
 
-    if malware_response.status_code == 200:
-        malware_info = malware_response.json()
-        mal_data = malware_info['data']
-        for malware in mal_data:
-            malware_hash = malware['hash']
-            malware_names = malware['detections']
-        print("=============================")
-        print("Associated Malware: ")
-        print("=============================")
-        print("\tHash: ", malware_hash)
-        print("\tDetected as: ", malware_names)
-        print("")
-    else:
-        print("Request failed with status", {malware_response.status_code}) # Error Code here
+if malware_response.status_code == 200:
+            malware_info = malware_response.json()
+
+            if malware_info['data'] == "":
+                print("Not  Malicious")
+            else:    
+                mal_data = malware_info['data']
+        
+            for malware in mal_data:
+                malware_hash = malware['hash']
+                malware_names = malware['detections']
+                print("=============================")
+                print("Associated Malware: ")
+                print("=============================")
+                print("\tHash: ", malware_hash)
+                print("\tDetected as: ", malware_names)
+                print("")
 else:
-    print("Request failed with status", {gen_response.status_code}) # Error Code here
+    print("Request failed with status", {malware_response.status_code}) # Error Code here
