@@ -123,21 +123,20 @@ else:
         print("Request failed with status", {urls_response.status_code}) # Error Code here
 
 if malware_response.status_code == 200:
-            malware_info = malware_response.json()
+    malware_info = malware_response.json()
 
-            if malware_info['data'] == "":
-                print("Not  Malicious")
-            else:    
-                mal_data = malware_info['data']
-        
-            for malware in mal_data:
-                malware_hash = malware['hash']
-                malware_names = malware['detections']
-                print("=============================")
-                print("Associated Malware: ")
-                print("=============================")
-                print("\tHash: ", malware_hash)
-                print("\tDetected as: ", malware_names)
-                print("")
+    if malware_info['data'] == "":
+        print("Not  Malicious")
+    else:    
+        mal_data = malware_info['data']
+        print("=============================")
+        print("Associated Malware: ")
+        print("=============================")
+    for malware in mal_data:
+        malware_hash = malware['hash']
+        malware_names = malware['detections']
+        print("\tHash: ", malware_hash)
+        print("\tDetected as: ", malware_names)
+        print("")
 else:
     print("Request failed with status", {malware_response.status_code}) # Error Code here
