@@ -18,7 +18,7 @@ malware_url = f"https://otx.alienvault.com/api/v1/indicators/IPv4/{ip_addr}/malw
 dns_url = f"https://otx.alienvault.com/api/v1/indicators/IPv4/{ip_addr}/passive_dns"
 
 
-print("Retreiving Information Now...")
+print("Retrieving Information Now...")
 gen_response = requests.get(gen_url)
 geo_response = requests.get(geo_url)
 urls_response = requests.get(urls_url)
