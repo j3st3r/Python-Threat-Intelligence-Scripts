@@ -14,7 +14,7 @@ import pandas as pd
 from pandas import json_normalize
 
 ip_addr = input("Please Enter an IP Address: ")
-api_key = os.enviorn.get('API_KEY')
+api_key = os.environ.get('API_KEY')
 url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip_addr}"
 
 # Set up the headers
