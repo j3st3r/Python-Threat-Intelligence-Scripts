@@ -5,17 +5,16 @@
 # Created on: 01/11/2025
 
 '''
-Please note that this script is not compliant with security as the API key is statically assigned. 
-This can be updated to retrieve the API key from a protected file, user input, or user environment variable. 
+Please note that this script requires an environment variable called API_KEY to be set prior to executing this script. 
 '''
-
+import os
 import requests
 import json
 import pandas as pd
 from pandas import json_normalize
 
 ip_addr = input("Please Enter an IP Address: ")
-api_key = "<Replace with your own API Key>"
+api_key = os.enviorn.get('API_KEY')
 url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip_addr}"
 
 # Set up the headers
