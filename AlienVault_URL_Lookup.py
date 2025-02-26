@@ -15,7 +15,7 @@ url = input("Please Enter a URL: ")
 gen_url = f"https://otx.alienvault.com/api/v1/indicators/url/{url}/general"
 urls_url = f"https://otx.alienvault.com/api/v1/indicators/url/{url}/url_list"
 
-print("Retreiving Information Now...")
+print("Retrieving Information Now...")
 gen_response = requests.get(gen_url)
 urls_response = requests.get(urls_url)
 
