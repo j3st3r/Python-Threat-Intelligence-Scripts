@@ -30,7 +30,7 @@ import os
 print("Looking up Info for this hash: ", file_hash)
 analysis_url = f"https://otx.alienvault.com/api/v1/indicators/file/{file_hash}/general"
 
-print("Retreiving ", analysis_url)
+print("Retrieving ", analysis_url)
 response = requests.get(analysis_url)
 
 if response.status_code == 200:
