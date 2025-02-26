@@ -25,7 +25,7 @@ header = {
 }
 
 response = requests.get(url, headers=header)
-print("Retreiving ", {url})
+print("Retrieving ", {url})
 
 if response.status_code == 200:
     vt_data = response.text
