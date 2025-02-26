@@ -32,7 +32,7 @@ header = {
 }
 
 response = requests.get(url, headers=header)
-print("Retreiving ", {url})
+print("Retrieving ", {url})
 print("")
 
 
